@@ -1,0 +1,51 @@
+local Lighting = game:GetService("Lighting")
+local UIS = game:GetService("UserInputService")
+
+local Highlight = Instance.new("Highlight")
+
+    -- Tp To Rake --
+UIS.InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.N then
+        local RHumanoidRootPart = workspace:FindFirstChild("Rake"):FindFirstChild("HumanoidRootPart")
+        RHumanoidRootPart.Anchored = true
+        workspace:FindFirstChild("Rake"):PivotTo(workspace.Gamer_Youtuber228.HumanoidRootPart.CFrame)
+    end
+end)
+
+    -- Tp Back Rake --
+UIS.InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.M then
+        local RHumanoidRootPart = workspace:FindFirstChild("Rake"):FindFirstChild("HumanoidRootPart")
+        RHumanoidRootPart.Anchored = false
+    end
+end)
+
+    -- Adding Rake Outline --
+UIS.InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.K then
+        if workspace:FindFirstChild("Rake"):FindFirstChild("Highlight") then return end
+        Highlight.FillColor = Color3.new(25,25,25)
+        Highlight.OutlineColor = Color3.new(0,0,0)
+        Highlight.FillTransparency = 0.45
+        Highlight.Parent = workspace:FindFirstChild("Rake")
+        Highlight.Name = "RakeHighlight"
+    end
+end)
+
+    -- Removing Fog --
+UIS.InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.L then
+        Lighting.FogEnd = 4500
+        Lighting.Brightness = 5
+        Lighting.ClockTime = 12
+    end
+end)
+
+    -- Teleport To Rake --
+UIS.InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.J then
+        local PHumanoidRootPart = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        local RHumanoidRootPart = workspace:FindFirstChild("Rake"):FindFirstChild("HumanoidRootPart")
+        PHumanoidRootPart:PivotTo(RHumanoidRootPart.CFrame)
+    end
+end)
